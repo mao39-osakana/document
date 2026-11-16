@@ -1,0 +1,1647 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>心理学を応用したコミュニケーション戦術</title>
+    <style>
+      :root {
+        --navy: #101c31;
+        --navy-deep: #0a1322;
+        --gold: #d8bc7c;
+        --gold-deep: #b9975b;
+        --bg: #f6f4ef;
+        --surface: #ffffff;
+        --surface-soft: #faf7f0;
+        --ink: #23272f;
+        --ink-soft: #5a5f6a;
+        --line: #e3ddcf;
+        --accent-soft: #f3ead6;
+        --warn-bg: #fdf6ec;
+        --warn-line: #e8cf9e;
+        --warn-ink: #6b5316;
+        --shadow: 0 10px 30px rgba(16, 28, 49, 0.10);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c1424;
+          --surface: #14213a;
+          --surface-soft: #182742;
+          --ink: #ece7db;
+          --ink-soft: #a9b0bf;
+          --line: #2c3c5c;
+          --accent-soft: #223354;
+          --warn-bg: #2a2417;
+          --warn-line: #6b5a2e;
+          --warn-ink: #e3cd93;
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 64px; }
+
+      /* ---------- ヘッダー ---------- */
+      header.hero {
+        background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+        color: #f2ecdd;
+        margin: 0 -20px;
+        padding: 44px 28px 36px;
+      }
+      .hero .brand {
+        font-family: "Libre Baskerville", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        letter-spacing: 0.22em;
+        font-size: 13px;
+        color: var(--gold);
+        margin: 0 0 18px;
+      }
+      .hero h1 {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+        font-weight: 600;
+        font-size: 27px;
+        line-height: 1.5;
+        margin: 0 0 14px;
+      }
+      .hero .sub { margin: 0; font-size: 14.5px; color: #c9cfdd; line-height: 1.8; }
+
+      .premise {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin: 24px 0 8px;
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        box-shadow: var(--shadow);
+      }
+      .premise strong { color: var(--ink); }
+
+      /* ---------- 目次 ---------- */
+      section.toc { margin-top: 36px; }
+      h2.section-title {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--gold-deep);
+      }
+      .toc-note { font-size: 13.5px; color: var(--ink-soft); margin: 10px 0 20px; }
+      .toc-group { margin-bottom: 22px; }
+      .toc-group h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 2px;
+        color: var(--ink);
+        line-height: 1.6;
+      }
+      .toc-group .group-tags {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--ink-soft);
+        margin: 0 0 10px;
+        letter-spacing: 0.02em;
+      }
+      .toc-group .group-tags span + span { margin-left: 8px; }
+      .toc-list { list-style: none; margin: 0; padding: 0; }
+      .toc-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+      .toc-list li .no {
+        flex: 0 0 auto;
+        width: 26px; height: 26px;
+        border-radius: 50%;
+        border: 1px solid var(--gold-deep);
+        color: var(--gold-deep);
+        font-size: 12.5px;
+        font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .toc-list li.ready { border-color: var(--gold-deep); background: var(--surface-soft); }
+      .toc-list li.ready .no { background: var(--gold-deep); color: #fff; border-color: var(--gold-deep); }
+      .toc-list li .title { flex: 1 1 auto; }
+      .toc-list li a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-height: 36px; }
+      .badge {
+        flex: 0 0 auto;
+        font-size: 11.5px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 999px;
+        letter-spacing: 0.03em;
+      }
+      .badge.now { background: var(--gold); color: var(--navy); }
+      .badge.soon { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); font-weight: 400; }
+      .toc-list li.dim { color: var(--ink-soft); }
+
+      /* ---------- カード ---------- */
+      article.card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        margin-top: 44px;
+        overflow: hidden;
+      }
+      .card-head {
+        background: linear-gradient(150deg, var(--navy) 0%, #1a2c4c 100%);
+        color: #f2ecdd;
+        padding: 26px 24px 22px;
+      }
+      .card-head .meta {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        font-size: 12.5px; margin-bottom: 4px;
+      }
+      .card-head .meta .no-badge {
+        background: var(--gold); color: var(--navy);
+        font-weight: 700; padding: 3px 11px; border-radius: 999px;
+      }
+      .card-head .meta .group-theme { font-weight: 700; font-size: 13.5px; color: #f2ecdd; }
+      .card-head .group-tags {
+        font-size: 11.5px; font-weight: 400; color: #aab3c5;
+        margin: 0 0 12px; letter-spacing: 0.02em;
+      }
+      .card-head .group-tags span + span { margin-left: 8px; }
+      .card-head h2 {
+        font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: 24px; font-weight: 600; line-height: 1.45; margin: 0 0 8px;
+      }
+      .card-head p { margin: 0; font-size: 14px; color: #c9cfdd; }
+      .card-body { padding: 8px 24px 28px; }
+      .part { margin-top: 28px; }
+      .part-label {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+        color: var(--gold-deep);
+        margin: 0 0 10px;
+      }
+      .part-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+      .part-label .step-num {
+        background: var(--navy); color: var(--gold);
+        width: 22px; height: 22px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: 12px; letter-spacing: 0;
+      }
+      .part p { margin: 0 0 12px; font-size: 15.5px; }
+      .part p:last-child { margin-bottom: 0; }
+
+      /* フロー図 */
+      .flow {
+        display: flex; align-items: stretch; gap: 0;
+        margin: 18px 0 6px;
+      }
+      .flow .node {
+        flex: 1 1 0;
+        background: var(--surface-soft);
+        border: 1.5px solid var(--gold-deep);
+        border-radius: 10px;
+        padding: 12px 10px;
+        text-align: center;
+      }
+      .flow .node .node-k { display: block; font-size: 11.5px; font-weight: 700; color: var(--gold-deep); letter-spacing: 0.06em; margin-bottom: 4px; }
+      .flow .node .node-t { display: block; font-size: 13.5px; font-weight: 700; line-height: 1.55; }
+      .flow .node .node-d { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 4px; }
+      .flow .arrow {
+        flex: 0 0 26px;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--gold-deep); font-size: 16px; font-weight: 700;
+      }
+      @media (max-width: 560px) {
+        .flow { flex-direction: column; }
+        .flow .arrow { flex-basis: 24px; transform: rotate(90deg); }
+      }
+
+      /* ハロー効果の図 */
+      .halo {
+        margin: 18px 0 4px;
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+      }
+      .halo .center {
+        display: inline-block;
+        background: var(--navy); color: var(--gold);
+        font-weight: 700; font-size: 14.5px;
+        padding: 8px 18px; border-radius: 999px;
+      }
+      .halo .rays { font-size: 18px; color: var(--gold-deep); line-height: 1.2; margin: 4px 0 8px; }
+      .halo .effects { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+      .halo .effects span {
+        background: var(--surface);
+        border: 1px solid var(--gold-deep);
+        border-radius: 999px;
+        font-size: 13px; padding: 5px 13px;
+      }
+      .halo .cap { font-size: 12.5px; color: var(--ink-soft); margin: 10px 0 0; }
+
+      /* 使い方リスト */
+      ul.use { list-style: none; margin: 4px 0 0; padding: 0; counter-reset: use; }
+      ul.use li {
+        position: relative;
+        padding: 14px 16px 14px 52px;
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      ul.use li::before {
+        counter-increment: use;
+        content: counter(use);
+        position: absolute; left: 14px; top: 14px;
+        width: 26px; height: 26px; border-radius: 50%;
+        background: var(--gold); color: var(--navy);
+        font-weight: 700; font-size: 13.5px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      ul.use li strong { display: block; margin-bottom: 2px; }
+      ul.use li span { color: var(--ink-soft); font-size: 14px; }
+
+      /* 一例 */
+      .example {
+        background: var(--accent-soft);
+        border-radius: 10px;
+        padding: 16px 18px;
+        font-size: 15px;
+      }
+      .example p { margin: 0 0 10px; }
+      .example p:last-child { margin-bottom: 0; }
+      .example .scene { font-weight: 700; }
+
+      /* 注意 */
+      .warn {
+        background: var(--warn-bg);
+        border: 1px solid var(--warn-line);
+        border-radius: 10px;
+        padding: 16px 18px;
+        font-size: 15px;
+        color: var(--warn-ink);
+      }
+      .warn p { margin: 0; color: inherit; }
+
+      .card-foot {
+        margin-top: 28px; padding-top: 16px;
+        border-top: 1px solid var(--line);
+        font-size: 13.5px; color: var(--ink-soft);
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      }
+      .card-foot a { color: var(--gold-deep); text-decoration: none; min-height: 36px; display: inline-flex; align-items: center; }
+
+      /* 汎用図解 */
+      .diagram {
+        margin: 18px 0 4px;
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 18px 16px;
+        text-align: center;
+      }
+      .diagram .cap { font-size: 12.5px; color: var(--ink-soft); margin: 10px 0 0; }
+      .diagram svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+      .diagram .svg-label { font-size: 12px; fill: var(--ink-soft); }
+      .diagram .svg-label-strong { font-size: 13px; font-weight: 700; fill: var(--ink); }
+      .diagram .svg-gold { fill: var(--gold-deep); }
+      .venn { position: relative; width: 280px; max-width: 100%; height: 170px; margin: 0 auto; }
+      .venn .circle {
+        position: absolute; top: 10px; width: 150px; height: 150px; border-radius: 50%;
+        border: 2px solid var(--gold-deep); display: flex; align-items: center; justify-content: center;
+        font-size: 13.5px; font-weight: 700; background: color-mix(in srgb, var(--gold) 18%, transparent);
+      }
+      .venn .c1 { left: 10px; padding-right: 40px; }
+      .venn .c2 { right: 10px; padding-left: 40px; }
+      .venn .overlap {
+        position: absolute; left: 50%; top: 62px; transform: translateX(-50%);
+        font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold);
+        padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+      }
+      .swap { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+      .swap .person {
+        background: var(--navy); color: var(--gold); font-weight: 700; font-size: 14px;
+        padding: 10px 20px; border-radius: 999px;
+      }
+      .swap .arrows { font-size: 20px; color: var(--gold-deep); line-height: 1.5; font-weight: 700; }
+      .swap .arrows small { display: block; font-size: 11.5px; color: var(--ink-soft); font-weight: 400; }
+      .stairs { display: flex; align-items: flex-end; gap: 10px; justify-content: center; margin-top: 6px; }
+      .stairs .step {
+        flex: 1 1 0; max-width: 150px;
+        background: var(--surface); border: 1.5px solid var(--gold-deep); border-radius: 8px 8px 0 0;
+        padding: 10px 8px; font-size: 13px; font-weight: 700; line-height: 1.5;
+      }
+      .stairs .step small { display: block; font-weight: 400; font-size: 11.5px; color: var(--ink-soft); margin-top: 2px; }
+      .stairs .s1 { height: 74px; } .stairs .s2 { height: 104px; } .stairs .s3 { height: 134px; }
+      .compare { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .compare .box {
+        flex: 1 1 180px; max-width: 240px;
+        border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 12px; background: var(--surface);
+      }
+      .compare .box.hot { border-color: var(--gold-deep); background: var(--accent-soft); }
+      .compare .box .box-k { display: block; font-size: 11.5px; font-weight: 700; color: var(--gold-deep); letter-spacing: 0.06em; margin-bottom: 4px; }
+      .compare .box .box-t { display: block; font-size: 14px; font-weight: 700; line-height: 1.6; }
+      .compare .box .box-d { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 4px; }
+      .trio { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+      .trio .t-card {
+        flex: 1 1 120px; max-width: 160px;
+        background: var(--surface); border: 1.5px solid var(--gold-deep); border-radius: 10px; padding: 12px 10px;
+      }
+      .trio .t-card .t-t { display: block; font-size: 15px; font-weight: 700; }
+      .trio .t-card .t-d { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 3px; }
+      .diagram .down-arrow { font-size: 18px; color: var(--gold-deep); font-weight: 700; margin: 8px 0; }
+      .diagram .result {
+        display: inline-block; background: var(--navy); color: var(--gold);
+        font-weight: 700; font-size: 14.5px; padding: 8px 20px; border-radius: 999px;
+      }
+      .ratio { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+      .ratio span {
+        width: 52px; height: 52px; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 12px; font-weight: 700; line-height: 1.4; text-align: center;
+      }
+      .ratio .pos { background: var(--gold); color: var(--navy); }
+      .ratio .neg { background: var(--surface); border: 1.5px solid var(--gold-deep); color: var(--ink); }
+      .cycle { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+      .cycle .c-node {
+        background: var(--surface); border: 1.5px solid var(--gold-deep); border-radius: 999px;
+        font-size: 13.5px; font-weight: 700; padding: 8px 16px;
+      }
+      .cycle .c-arrow { color: var(--gold-deep); font-weight: 700; font-size: 16px; }
+      .cycle .c-arrow .loop-label { display: none; }
+      /* No.16の循環図は横並びだと狭い幅で中途半端に折り返すため、縦積みに切り替える */
+      @media (max-width: 680px) {
+        .cycle { flex-direction: column; gap: 6px; }
+        .cycle .c-arrow { transform: rotate(90deg); line-height: 1.2; }
+        .cycle .c-arrow.loop { transform: none; font-size: 13px; }
+        .cycle .c-arrow .loop-label { display: inline; }
+      }
+      .stack { display: flex; flex-direction: column-reverse; gap: 6px; max-width: 340px; margin: 0 auto; }
+      .stack .brick {
+        border: 1.5px solid var(--gold-deep); border-radius: 8px; padding: 9px 12px;
+        font-size: 13.5px; font-weight: 700; background: var(--surface);
+      }
+      .stack .brick small { display: block; font-weight: 400; font-size: 11.5px; color: var(--ink-soft); }
+      .stack .brick.top { background: var(--accent-soft); }
+
+      footer.page-foot {
+        margin-top: 48px; text-align: center;
+        font-size: 12.5px; color: var(--ink-soft);
+      }
+      footer.page-foot .brand {
+        font-family: "Libre Baskerville", "Hiragino Mincho ProN", serif;
+        letter-spacing: 0.22em; color: var(--gold-deep); font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="hero">
+        <p class="brand">PRO-GRAV</p>
+        <h1>心理学を応用した<br />コミュニケーション戦術</h1>
+        <p class="sub">会員向けインプット教材 ― 好意や安心感が生まれる「仕組み」を知り、自分の行動を設計するための読み物です。</p>
+      </header>
+
+      <div class="premise">
+        <strong>この教材の前提。</strong>
+        ここで扱うのは、相手を操作するためのテクニックではありません。好意や安心感が「なぜ生まれるのか」という仕組みを理解して、自分の行動を組み立てるための材料です。仕組みを知ったうえで、相手に合わせて使うかどうかは、自分で選んでいくものと考えています。
+      </div>
+
+      <!-- 目次 -->
+      <section class="toc" id="toc">
+        <h2 class="section-title">目次 ― 全17件</h2>
+
+        <div class="toc-group">
+          <h3>印象と好意が生まれる仕組み</h3>
+          <p class="group-tags"><span>#Step1 出会い</span><span>#Step2 デート（対面1〜2回目）</span></p>
+          <ul class="toc-list">
+            <li class="ready"><a href="#no1"><span class="no">1</span><span class="title">初頭効果とハロー効果</span></a></li>
+            <li class="ready"><a href="#no2"><span class="no">2</span><span class="title">単純接触効果</span></a></li>
+            <li class="ready"><a href="#no3"><span class="no">3</span><span class="title">類似性</span></a></li>
+            <li class="ready"><a href="#no4"><span class="no">4</span><span class="title">好意の返報性</span></a></li>
+          </ul>
+        </div>
+
+        <div class="toc-group">
+          <h3>会話の中で距離が縮まる仕組み</h3>
+          <p class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></p>
+          <ul class="toc-list">
+            <li class="ready"><a href="#no5"><span class="no">5</span><span class="title">自己開示の返報性</span></a></li>
+            <li class="ready"><a href="#no6"><span class="no">6</span><span class="title">質問の深め方と「36の質問」の研究</span></a></li>
+            <li class="ready"><a href="#no7"><span class="no">7</span><span class="title">感情のラベリング</span></a></li>
+            <li class="ready"><a href="#no8"><span class="no">8</span><span class="title">ペーシング</span></a></li>
+          </ul>
+        </div>
+
+        <div class="toc-group">
+          <h3>デートの設計に効く仕組み</h3>
+          <p class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></p>
+          <ul class="toc-list">
+            <li class="ready"><a href="#no9"><span class="no">9</span><span class="title">ピーク・エンドの法則</span></a></li>
+            <li class="ready"><a href="#no10"><span class="no">10</span><span class="title">ドキドキの誤帰属</span></a></li>
+            <li class="ready"><a href="#no11"><span class="no">11</span><span class="title">ゲイン効果</span></a></li>
+          </ul>
+        </div>
+
+        <div class="toc-group">
+          <h3>分かり合う仕組み</h3>
+          <p class="group-tags"><span>#Step3 関係構築（対面3回目以降）</span></p>
+          <ul class="toc-list">
+            <li class="ready"><a href="#no12"><span class="no">12</span><span class="title">知覚される応答性</span></a></li>
+            <li class="ready"><a href="#no13"><span class="no">13</span><span class="title">自己拡大モデル</span></a></li>
+            <li class="ready"><a href="#no14"><span class="no">14</span><span class="title">小さな合意の積み重ね</span></a></li>
+          </ul>
+        </div>
+
+        <div class="toc-group">
+          <h3>関係を続ける仕組み</h3>
+          <p class="group-tags"><span>#Step4 関係深化</span><span>#Step5 信頼維持</span></p>
+          <ul class="toc-list">
+            <li class="ready"><a href="#no15"><span class="no">15</span><span class="title">ポジティブとネガティブの比率（5:1）</span></a></li>
+            <li class="ready"><a href="#no16"><span class="no">16</span><span class="title">感謝の伝達</span></a></li>
+            <li class="ready"><a href="#no17"><span class="no">17</span><span class="title">約束を守る一貫性</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- No.1 カード -->
+      <article class="card" id="no1">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.1</span>
+            <span class="group-theme">印象と好意が生まれる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step1 出会い</span><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>初頭効果とハロー効果</h2>
+          <p>印象と好意が生まれる仕組み ― 最初の印象が、その後の見え方を決めていく</p>
+        </div>
+
+        <div class="card-body">
+
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人は、最初に得た印象をもとに「この人はこういう人」という枠を早い段階で作る傾向があると言われています（初頭効果）。そして一度その枠ができると、その後の言動は、その枠に沿って解釈されやすくなります。たとえば「落ち着いた人」という枠ができれば、無口な場面も「落ち着いている」と受け取られやすくなる、という具合です。</p>
+            <div class="flow" role="img" aria-label="写真や第一声から印象の枠ができ、その後の言動がその枠で解釈される流れ">
+              <div class="node">
+                <span class="node-k">STEP 1</span>
+                <span class="node-t">写真・第一声・最初の数分</span>
+                <span class="node-d">最初に目に入る情報</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 2</span>
+                <span class="node-t">「こういう人」という枠ができる</span>
+                <span class="node-d">印象の大枠が決まる</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 3</span>
+                <span class="node-t">その後の言動は、その枠で解釈される</span>
+                <span class="node-d">同じ行動でも見え方が変わる</span>
+              </div>
+            </div>
+            <p>もう1つ、似た働きをするのがハロー効果です。1つの良い特徴が目立つと、それにつられて全体の評価まで上がりやすくなる、というものです。</p>
+            <div class="halo">
+              <span class="center">笑顔が自然で、感じがいい</span>
+              <div class="rays" aria-hidden="true">↙　↓　↘</div>
+              <div class="effects">
+                <span>誠実そう</span>
+                <span>余裕がありそう</span>
+                <span>一緒にいて楽しそう</span>
+              </div>
+              <p class="cap">1つの良い特徴が、ほかの面の評価まで持ち上げやすい</p>
+            </div>
+            <p>裏を返すと、最初の印象は「その人全体の評価の土台」になりやすい、ということでもあります。だからこそ、入口の設計には意味があると考えられます。</p>
+          </div>
+
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>プロフィール写真と文で、最初の枠を作る</strong>
+                <span>対面より前に、枠づくりは始まっています。写真とプロフィール文は「会う前の最初の数分」と考えて整えておくと、枠の出発点が安定しやすくなります。</span>
+              </li>
+              <li>
+                <strong>当日の最初の数分で、枠を固める</strong>
+                <span>挨拶、笑顔、身だしなみ。この3つがそろっていると、プロフィールでできた枠と当日の印象が一致して、安心感につながりやすくなります。</span>
+              </li>
+              <li>
+                <strong>自分の強みを1つ、最初に見える場所に置く</strong>
+                <span>ハロー効果を考えると、強みは散らすより、1つを分かりやすく見せるほうが全体の印象に広がりやすいと言えます。話しやすさ、聞き上手、段取りの良さなど、自分に合ったものを1つ選んでみてください。</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">待ち合わせの場面。</span>少し早めに着いて待つのではなく、相手の姿が見えたタイミングで立って、笑顔で一言。</p>
+              <p>「こんにちは、今日は来てくれてありがとうございます」</p>
+              <p>座ったままスマホを見ている状態で迎えるのと比べると、最初の数十秒でできる枠が変わってきます。特別な演出はいりません。立つ、笑顔、短い挨拶。この3つの動きだけで十分な場面も多いはずです。</p>
+            </div>
+          </div>
+
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>入口の印象が良くても、中身が伴わなければ枠は崩れていきます。最初の印象はあくまで「入口」であって、それだけで関係が続くわけではありません。無理に作った印象は、会話の中で少しずつ無理が出てくるものです。入口を整えることと、その後の会話や行動で中身を見せていくこと、この2つをセットで考えるのがおすすめです。</p>
+            </div>
+          </div>
+
+          <div class="card-foot">
+            <a href="#no2">次へ：No.2 単純接触効果 →</a>
+            <a href="#toc">目次へ戻る ↑</a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- No.2 カード -->
+      <article class="card" id="no2">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.2</span>
+            <span class="group-theme">印象と好意が生まれる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step1 出会い</span><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>単純接触効果</h2>
+          <p>印象と好意が生まれる仕組み ― 会う回数が、少しずつ好意を育てていく</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人は、繰り返し接する相手ほど「見慣れた、安心できる存在」として受け取りやすく、好意も上がりやすいと言われています（単純接触効果。心理学者ザイオンスが提唱しました）。初めての相手には少なからず警戒が働くものですが、接する回数が増えるにつれて、その警戒がほどけていくイメージです。</p>
+            <div class="diagram" role="img" aria-label="接する回数が増えるにつれて、好意がゆるやかに上がっていくグラフ">
+              <svg viewBox="0 0 320 170" width="320">
+                <line x1="40" y1="140" x2="300" y2="140" stroke="#b9975b" stroke-width="1.5" />
+                <line x1="40" y1="140" x2="40" y2="20" stroke="#b9975b" stroke-width="1.5" />
+                <path d="M 45 132 C 120 128, 170 105, 220 75 S 285 38, 295 32" fill="none" stroke="#b9975b" stroke-width="3" stroke-linecap="round" />
+                <circle cx="70" cy="130" r="4.5" fill="#101c31" />
+                <circle cx="150" cy="112" r="4.5" fill="#101c31" />
+                <circle cx="230" cy="68" r="4.5" fill="#101c31" />
+                <text x="36" y="14" class="svg-label">好意</text>
+                <text x="248" y="158" class="svg-label">接する回数 →</text>
+                <text x="52" y="158" class="svg-label">1回目</text>
+              </svg>
+              <p class="cap">回数が増えるほど、好意はゆるやかに上がっていく（上がり方はだんだん緩やかになります）</p>
+            </div>
+            <p>ポイントは、1回の長さよりも「回数」が効きやすい、という点です。短くても何度か顔を合わせるほうが、顔見知りとしての安心感は育ちやすくなります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>長い1回より、短い接触を重ねる</strong>
+                <span>初回から長時間のデートで一気に距離を詰めようとするより、短時間でも「また会えた」という回数を重ねるほうが、安心感は育ちやすくなります。</span>
+              </li>
+              <li>
+                <strong>会わない期間は、短いやり取りでつなぐ</strong>
+                <span>次のデートまでの間、短いLINEのやり取りが1回分の接触になります。長文である必要はなく、相手の話に関連した一言で十分なことが多いです。</span>
+              </li>
+              <li>
+                <strong>「次」を小さく用意しておく</strong>
+                <span>「今度はあの店に行きましょう」のように、次の接触のきっかけを小さく置いておくと、回数を重ねる流れが作りやすくなります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">初回デートの帰り際。</span>名残惜しく引き延ばすより、少し早めに切り上げてひと言添える形です。</p>
+              <p>「今日は楽しかったです。短い時間でしたけど、また近いうちにお茶でもどうですか」</p>
+              <p>「楽しかった」という感想と、次の小さな提案がセットになると、相手の中でも「また会う」イメージが残りやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>接触の回数が効くのは、あくまで相手が不快に感じていない場合です。返信を急かすような連絡や、相手のペースを無視した誘いが続くと、回数を重ねるほど逆効果になりかねません。相手の反応が薄いときは、間隔を空けるのも大事な選択肢です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no1">← 前へ：No.1 初頭効果とハロー効果</a>
+            <a href="#no3">次へ：No.3 類似性 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.3 カード -->
+      <article class="card" id="no3">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.3</span>
+            <span class="group-theme">印象と好意が生まれる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step1 出会い</span><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>類似性</h2>
+          <p>印象と好意が生まれる仕組み ― 「自分と似ている」が、親近感の入口になる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人は、自分と共通点のある相手に好意や親近感を持ちやすいと言われています。出身地、食の好み、休日の過ごし方、価値観。共通点が見つかると「この人とは話が合いそうだ」という感覚が生まれ、会話のハードルも下がりやすくなります。</p>
+            <div class="diagram" role="img" aria-label="2人の円が重なる部分が共通点で、重なりが親近感につながる図">
+              <div class="venn">
+                <div class="circle c1">自分</div>
+                <div class="circle c2">相手</div>
+                <span class="overlap">共通点</span>
+              </div>
+              <p class="cap">重なる部分（共通点）が見つかるほど、「話が合う」という感覚が生まれやすい</p>
+            </div>
+            <p>共通点は、大きいものである必要はありません。「休日は家でゆっくり派」「辛いものが好き」といった小さな一致でも、会話を前に進めるきっかけになります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>共通点を探せる質問を用意する</strong>
+                <span>出身、食の好み、休日の過ごし方、最近ハマっていること。このあたりは共通点が見つかりやすく、話題も広げやすいテーマです。</span>
+              </li>
+              <li>
+                <strong>見つけたら、少しだけ深める</strong>
+                <span>「同じですね」で終わらせず、「いつから好きなんですか」のように一歩だけ深めると、共通点が会話の軸になっていきます。</span>
+              </li>
+              <li>
+                <strong>違いは否定せず、興味として受け取る</strong>
+                <span>共通点ばかりが大事なわけではありません。違う部分は「自分にはない視点」として面白がれると、会話の幅が広がります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">食事の好みの話になった場面。</span>相手が「休日は家で料理をすることが多い」と話したら。</p>
+              <p>「僕も休日は家でゆっくり派です。料理までできるのはすごいですね。よく作るのはどんな料理ですか」</p>
+              <p>共通点を言葉にしてから、相手の話を少し深める。この順番だと、共感と会話の広がりが両方生まれやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>共通点が欲しいあまり、相手に無理に合わせたり、実際には違うことを「同じです」と言ったりするのはおすすめしません。後から食い違いが分かると、それまでの一致まで疑われてしまうことがあります。本当の共通点を少しずつ見つけていくほうが、結果的に近道になりやすいです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no2">← 前へ：No.2 単純接触効果</a>
+            <a href="#no4">次へ：No.4 好意の返報性 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.4 カード -->
+      <article class="card" id="no4">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.4</span>
+            <span class="group-theme">印象と好意が生まれる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step1 出会い</span><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>好意の返報性</h2>
+          <p>印象と好意が生まれる仕組み ― 好意は、先に渡すと返ってきやすい</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人は、好意を示してくれた相手には、好意を返したくなる傾向があると言われています（好意の返報性）。「この人は自分に好意を持ってくれている」と感じると、相手を見る目も自然と温かくなりやすい、ということです。</p>
+            <div class="diagram" role="img" aria-label="好意を先に渡すと、好意が返ってくる往復の図">
+              <div class="swap">
+                <span class="person">自分</span>
+                <span class="arrows">→<small>好意を言葉で渡す</small>←<small>好意が返ってくる</small></span>
+                <span class="person">相手</span>
+              </div>
+              <p class="cap">好意は、待つより先に渡すほうが循環しやすい</p>
+            </div>
+            <p>逆に、好意が伝わらないままでは、相手も好意を返しようがありません。「相手がどう思っているか分からない」という状態は、距離が縮まりにくい状態でもあります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>好意は言葉にして先に渡す</strong>
+                <span>「会えて嬉しいです」「今日を楽しみにしていました」。短くても、言葉になっているかどうかで伝わり方は変わります。</span>
+              </li>
+              <li>
+                <strong>褒めるなら具体的に</strong>
+                <span>「素敵ですね」より「話を聞くときの相づちが優しくて、話しやすいです」のように、何がどう良いのかが分かると、受け取る側も素直に受け取りやすくなります。</span>
+              </li>
+              <li>
+                <strong>相手の良いところを探す姿勢で会う</strong>
+                <span>好意を渡すには、まず相手の良いところに気づく必要があります。評価する目ではなく、見つける目で会話してみてください。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">デートの序盤、店に着いて落ち着いたタイミングで。</span></p>
+              <p>「正直、今日お会いできるのを楽しみにしてました。プロフィールの文章が丁寧で、会ってみたいなと思って」</p>
+              <p>なぜ会いたかったのかまで添えると、社交辞令ではなく本心として伝わりやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>好意を渡すことと、見返りを求めることは別物です。「これだけ好意を示したのだから」という圧が伝わると、相手は重く感じやすくなります。また、誰にでも同じ褒め言葉を並べるような渡し方は、かえって軽く見られがちです。渡すのは本当に感じた好意だけ、が基本です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no3">← 前へ：No.3 類似性</a>
+            <a href="#no5">次へ：No.5 自己開示の返報性 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.5 カード -->
+      <article class="card" id="no5">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.5</span>
+            <span class="group-theme">会話の中で距離が縮まる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>自己開示の返報性</h2>
+          <p>会話の中で距離が縮まる仕組み ― 自分の話を開くと、相手も開きやすくなる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>自分のことを話す（自己開示）と、相手も自分のことを話しやすくなる、という往復が起きやすいと言われています。人は「相手だけが自分のことを知っていて、自分は相手を知らない」という状態に、どこか落ち着かなさを感じるためです。</p>
+            <div class="diagram" role="img" aria-label="事実から経験、気持ちへと開示が深まっていく階段の図">
+              <div class="stairs">
+                <div class="step s1">事実<small>仕事・住まい・趣味</small></div>
+                <div class="step s2">経験<small>これまでの出来事や背景</small></div>
+                <div class="step s3">気持ち<small>今の思いや悩み</small></div>
+              </div>
+              <p class="cap">開示には深さの段階がある。一段ずつ、釣り合いを取りながら進むのがポイント</p>
+            </div>
+            <p>大事なのは深さの釣り合いです。相手が事実レベルの話をしている段階で、自分だけ気持ちの深い話をすると、バランスが崩れて相手が引いてしまうことがあります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>自分から一段開いて、相手を待つ</strong>
+                <span>質問ばかりでは尋問のようになります。質問の答えを聞いたら、自分のことも同じ深さで少し返してから、相手の話を待ちます。</span>
+              </li>
+              <li>
+                <strong>深さは相手に合わせて一段ずつ</strong>
+                <span>相手が経験の話をしてくれたら、自分も経験レベルの話を返す。気持ちの話は、信頼が育ってから少しずつ、が目安です。</span>
+              </li>
+              <li>
+                <strong>弱みも、最初に小さく言っておく</strong>
+                <span>「笑顔が得意じゃなくて、緊張すると無表情に見えるかもしれません」のように、自分の弱みを先に小さく伝えておくと、相手が誤解しにくくなり、自分も楽に話せるようになります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">仕事の話になった場面。</span>相手の仕事内容を聞いたあと、自分のことも同じ深さで返します。</p>
+              <p>「僕は経理の仕事をしていて、月末は少しバタバタします。数字を追うのは好きなんですけど、人と話す機会が少ないのがちょっと悩みで」</p>
+              <p>事実に、経験と小さな気持ちを添えた開示です。相手も「私も実は…」と返しやすい深さになっています。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>初対面でいきなり深い悩みや過去の重い話を一方的に開くと、相手は「受け止めきれない」と感じやすくなります。開示は相手への信頼の表現であると同時に、相手に受け取る負担を渡す行為でもあります。深さと量は、相手の反応を見ながら調整していくのがおすすめです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no4">← 前へ：No.4 好意の返報性</a>
+            <a href="#no6">次へ：No.6 質問の深め方と「36の質問」の研究 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.6 カード -->
+      <article class="card" id="no6">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.6</span>
+            <span class="group-theme">会話の中で距離が縮まる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>質問の深め方と「36の質問」の研究</h2>
+          <p>会話の中で距離が縮まる仕組み ― 質問の深さが、親密さの深さを作っていく</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>心理学者アーサー・アーロンらの実験では、初対面の2人が、段階的に深くなる質問（全部で36問）を交互に答え合うと、通常の雑談をしたペアよりも親密さが上がりやすい、という結果が報告されています。質問の内容そのものより、「浅い質問から深い質問へ、順番に進むこと」と「お互いに答え合うこと」が効いていると考えられています。</p>
+            <div class="flow" role="img" aria-label="事実の質問から背景、気持ちの質問へと深さが上がっていく流れ">
+              <div class="node">
+                <span class="node-k">STEP 1</span>
+                <span class="node-t">事実を聞く</span>
+                <span class="node-d">休みの日は何をしていますか</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 2</span>
+                <span class="node-t">背景を聞く</span>
+                <span class="node-d">いつから／なぜ好きに</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 3</span>
+                <span class="node-t">気持ちを聞く</span>
+                <span class="node-d">その時間の何が好きですか</span>
+              </div>
+            </div>
+            <p>いきなり深い質問をするのではなく、前の答えを土台にして一段ずつ深くする。この順番が、相手の「話しても大丈夫」という感覚を育てていきます。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>質問は「事実 → 背景 → 気持ち」の順に深める</strong>
+                <span>相手の答えの中に出てきた言葉を拾って、次の質問につなげます。話題を次々変えるより、1つの話題を深めるほうが距離は縮まりやすくなります。</span>
+              </li>
+              <li>
+                <strong>自分の答えもセットで返す</strong>
+                <span>実験でも、答えるのは一方だけではありませんでした。聞いたら自分の答えも話す。この往復が自己開示の返報性（No.5）にもつながります。</span>
+              </li>
+              <li>
+                <strong>深い質問は、空気が温まってから</strong>
+                <span>価値観や将来の話は、会話が弾んできた後半に置くほうが自然です。序盤は軽い質問で土台を作ります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">相手が「休日はカフェ巡りをしています」と答えた場面。</span></p>
+              <p>「カフェ巡り、いいですね（事実の受け止め）。いつ頃から好きになったんですか（背景）。……なるほど。カフェで過ごす時間の、どんなところが好きですか（気持ち）」</p>
+              <p>1つの答えから3段深めるだけで、会話は「情報交換」から「その人を知る時間」に変わっていきます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>質問が続くと、相手は尋問されているように感じます。質問と質問の間には、自分の話や感想を挟むことが大切です。また、相手が答えに詰まった質問は、それ以上深追いしないこと。36の質問はあくまで研究の形で、そのままデートで読み上げるものではありません。仕組みだけ借りる、くらいの距離感がちょうどいいはずです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no5">← 前へ：No.5 自己開示の返報性</a>
+            <a href="#no7">次へ：No.7 感情のラベリング →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.7 カード -->
+      <article class="card" id="no7">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.7</span>
+            <span class="group-theme">会話の中で距離が縮まる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>感情のラベリング</h2>
+          <p>会話の中で距離が縮まる仕組み ― 気持ちを言葉にして返すと、「分かってもらえた」になる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>相手の話の中にある感情を、言葉にして返してあげることを「感情のラベリング」と言います。人は、自分の気持ちを言葉で言い当ててもらえると「分かってもらえた」と感じやすく、興奮や不安などの強い気持ちは、言葉にされることで落ち着きやすくなる、という研究も知られています。</p>
+            <div class="flow" role="img" aria-label="相手の話から感情を言葉にして返し、安心につながる流れ">
+              <div class="node">
+                <span class="node-k">STEP 1</span>
+                <span class="node-t">相手が出来事を話す</span>
+                <span class="node-d">事実の奥に感情がある</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 2</span>
+                <span class="node-t">感情を言葉にして返す</span>
+                <span class="node-d">「悔しかったですね」</span>
+              </div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="node">
+                <span class="node-k">STEP 3</span>
+                <span class="node-t">「分かってもらえた」安心感</span>
+                <span class="node-d">気持ちも落ち着きやすい</span>
+              </div>
+            </div>
+            <p>事実を正確に復唱することと、感情を返すことは別物です。返ってくるのが感情の言葉だと、相手は「話の内容」ではなく「自分の気持ち」を受け取ってもらえた感覚になります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>事実の復唱で終わらせず、感情の言葉で返す</strong>
+                <span>「仕事が忙しかったんですね」だけでなく、「それは大変でしたね」「頑張ったんですね」のように、気持ちの側に一言添えてみてください。</span>
+              </li>
+              <li>
+                <strong>嬉しい話にも同じように返す</strong>
+                <span>ラベリングは困った話専用ではありません。「それは嬉しいですね」「誇らしいですよね」と返ると、喜びも共有されやすくなります。</span>
+              </li>
+              <li>
+                <strong>相手の表情と声も手がかりにする</strong>
+                <span>言葉の内容だけでなく、声のトーンや表情が感情を教えてくれます。話の途中で相手が上を見て考えているようなときは、まだ話そうとしている合図のこともあるので、急いで返さず待つのもラベリングのうちです。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">相手が「準備していた企画が、直前で白紙になってしまって」と話した場面。</span></p>
+              <p>「え、それは悔しいですね。あれだけ準備してきたのに……」</p>
+              <p>アドバイスや解決策の前に、まず感情を言葉にして返す。これだけで、相手の「聞いてもらえた」という感覚は大きく変わってきます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>感情の言葉は、断定ではなく「たぶん、こう感じたのでは」という温度で返すのがおすすめです。外れることもあります。そのときは言い張らず、「違いましたか、ごめんなさい」と素直に直せば大丈夫です。外れたことを謝って直す姿勢自体が、「分かろうとしてくれている」という伝わり方をします。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no6">← 前へ：No.6 質問の深め方と「36の質問」の研究</a>
+            <a href="#no8">次へ：No.8 ペーシング →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.8 カード -->
+      <article class="card" id="no8">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.8</span>
+            <span class="group-theme">会話の中で距離が縮まる仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>ペーシング</h2>
+          <p>会話の中で距離が縮まる仕組み ― 話すテンポが合うと、安心感が生まれる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>会話の心地よさは、内容だけでなく「テンポ」にも左右されます。話す速さ、声のトーン、間の取り方が相手と近いと、人は無意識に「この人とは合う」「一緒にいて落ち着く」と感じやすいと言われています。逆に、自分のペースと大きくずれる相手とは、内容が良くても疲れやすくなります。</p>
+            <div class="diagram" role="img" aria-label="ずれていた2つの波形が、だんだん揃っていく図">
+              <svg viewBox="0 0 320 150" width="320">
+                <path d="M 15 35 q 10 -22, 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0" fill="none" stroke="#5a5f6a" stroke-width="2" />
+                <path d="M 15 75 q 16 -22, 32 0 t 32 0 t 32 0 t 32 0 t 32 0 t 32 0 t 32 0 t 32 0" fill="none" stroke="#5a5f6a" stroke-width="2" stroke-dasharray="5 4" />
+                <path d="M 15 122 q 13 -20, 26 0 t 26 0 t 26 0 t 26 0 t 26 0 t 26 0 t 26 0 t 26 0 t 26 0 t 26 0" fill="none" stroke="#b9975b" stroke-width="3" />
+                <text x="15" y="18" class="svg-label">相手のテンポ</text>
+                <text x="15" y="60" class="svg-label">自分のテンポ（ずれている）</text>
+                <text x="15" y="106" class="svg-label-strong">寄せると、波長が合ってくる</text>
+              </svg>
+              <p class="cap">真似をするのではなく、テンポを寄せていくイメージ</p>
+            </div>
+            <p>ペーシングは「合わせる技術」というより、「相手のペースを尊重する姿勢」が形になったもの、と考えると使いやすくなります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>話す速さを、相手に少し寄せる</strong>
+                <span>相手がゆっくり話す人なら、自分も少しゆっくりに。テンポの良い人なら、受け答えのリズムを軽く。極端に変える必要はなく、「少し寄せる」で十分です。</span>
+              </li>
+              <li>
+                <strong>相手の話を急かさない</strong>
+                <span>相手が言葉を探しているときに先回りして補うと、ペースを乱してしまいます。相手が正面を向いて話し終えた様子になってから返すくらいが、ちょうどいい場面も多いです。</span>
+              </li>
+              <li>
+                <strong>声の大きさとトーンもそろえる</strong>
+                <span>静かな店で相手が小さめの声なら、自分も少し落とす。声のボリュームが合っていると、それだけで「落ち着く人」という印象につながりやすくなります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">相手が少し緊張して、早口になっている場面。</span></p>
+              <p>自分の話す速さを意図的にゆっくりにして、相づちの間隔も少し空けます。「大丈夫ですよ、ゆっくりで」と言葉で言うより、自分のテンポを落とすほうが、相手の緊張はほどけやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>相手のしぐさや口癖をそのまま真似る「ミラーリング」のやりすぎは、不自然さや違和感につながります。ペーシングで合わせるのは、速さ・声・間のような「ペース」の部分だけ。真似ではなく、相手のペースを邪魔しない、という意識でいるのがおすすめです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no7">← 前へ：No.7 感情のラベリング</a>
+            <a href="#no9">次へ：No.9 ピーク・エンドの法則 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.9 カード -->
+      <article class="card" id="no9">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.9</span>
+            <span class="group-theme">デートの設計に効く仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>ピーク・エンドの法則</h2>
+          <p>デートの設計に効く仕組み ― 記憶に残るのは「一番の瞬間」と「終わり方」</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>心理学者ダニエル・カーネマンらの研究で知られる考え方です。人は体験全体を平均して評価するのではなく、「最も盛り上がった瞬間（ピーク）」と「終わり方（エンド）」の印象で、その体験を思い出す傾向があると言われています。途中に多少の待ち時間や小さな失敗があっても、ピークとエンドが良ければ、全体の記憶は良くなりやすい、ということです。</p>
+            <div class="diagram" role="img" aria-label="デート中の楽しさの曲線に、ピークとエンドの印が付いたグラフ">
+              <svg viewBox="0 0 320 180" width="320">
+                <line x1="40" y1="150" x2="300" y2="150" stroke="#b9975b" stroke-width="1.5" />
+                <line x1="40" y1="150" x2="40" y2="20" stroke="#b9975b" stroke-width="1.5" />
+                <path d="M 45 120 C 90 115, 110 118, 140 60 C 160 25, 180 30, 200 70 C 230 125, 260 118, 295 78" fill="none" stroke="#b9975b" stroke-width="3" stroke-linecap="round" />
+                <circle cx="168" cy="38" r="6" fill="#101c31" />
+                <circle cx="295" cy="78" r="6" fill="#101c31" />
+                <text x="128" y="24" class="svg-label-strong">ピーク（一番の瞬間）</text>
+                <text x="196" y="66" class="svg-label-strong">エンド（終わり方）</text>
+                <text x="44" y="168" class="svg-label">始まり</text>
+                <text x="262" y="168" class="svg-label">解散 →</text>
+              </svg>
+              <p class="cap">全体の平均ではなく、ピークとエンドが記憶の評価を決めやすい</p>
+            </div>
+            <p>デートは「最初から最後まで完璧に」を目指すより、「山場が1つある」「きれいに終わる」の2点を押さえるほうが、現実的で効果も出やすいと考えられます。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>デートの中に山場を1つ作る</strong>
+                <span>一番おいしい一品、景色のいい場所、相手が楽しみにしていたこと。全部を特別にしなくても、記憶に残る瞬間が1つあると全体の印象が変わります。</span>
+              </li>
+              <li>
+                <strong>解散の場面を丁寧に</strong>
+                <span>帰り際が慌ただしいと、それがエンドの印象になります。少し早めに店を出て、駅まで見送るくらいの余裕があると、終わり方が整いやすくなります。</span>
+              </li>
+              <li>
+                <strong>帰宅後のLINEまでが「エンド」</strong>
+                <span>「今日はありがとうございました。特に○○が楽しかったです」という一通が、その日の記憶の締めくくりになります。具体的な場面に触れると、ピークの記憶も一緒に呼び起こせます。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">デートの終わり、駅に向かう場面。</span></p>
+              <p>「今日はありがとうございました。僕はさっきのデザートの話で盛り上がったところが、一番楽しかったです」</p>
+              <p>自分のピークを言葉にして渡すと、相手にとっても「今日のハイライト」が共有され、その場面が2人の記憶に残りやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>エンドが強い分、終わり際の失点も大きく響きます。解散直前の愚痴、店員への横柄な態度、時間を大幅に引き延ばすことなどは、その日の良い印象ごと上書きされかねません。また、山場を作ろうと予定を詰め込みすぎると、2人とも疲れてピークどころではなくなります。山場は1つで十分です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no8">← 前へ：No.8 ペーシング</a>
+            <a href="#no10">次へ：No.10 ドキドキの誤帰属 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.10 カード -->
+      <article class="card" id="no10">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.10</span>
+            <span class="group-theme">デートの設計に効く仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>ドキドキの誤帰属</h2>
+          <p>デートの設計に効く仕組み ― 高揚感が、好意に読み替えられることがある</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人は、自分の心臓のドキドキの「理由」を、後から解釈して決めている面があると言われています。有名な「吊り橋実験」では、揺れる吊り橋の上で声をかけられた人のほうが、安定した橋の上にいた人より、その相手への好意的な反応が強かった、と報告されました。橋の揺れによるドキドキが、相手へのときめきとして読み替えられた、という解釈です。</p>
+            <div class="diagram" role="img" aria-label="体験によるドキドキが、相手への好意として読み替えられる図">
+              <div class="swap">
+                <span class="person" style="background:var(--surface);color:var(--ink);border:1.5px solid var(--gold-deep)">体験によるドキドキ</span>
+                <span class="arrows">→<small>読み替え</small></span>
+                <span class="person">相手への好意・ときめき</span>
+              </div>
+              <p class="cap">ドキドキの出どころを、脳が「相手のせい」と解釈することがある</p>
+            </div>
+            <p>なお正直にお伝えすると、この実験結果の再現性については議論があり、「必ず効く」と言い切れるものではありません。あくまで「そういう読み替えが起きることがある」という理解で読んでみてください。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>体験型のデートは盛り上がりやすい、と理解する</strong>
+                <span>一緒に何かをするデート（料理、スポーツ観戦、季節のイベントなど）が、座って話すだけのデートより印象に残りやすい理由の1つは、この高揚感にあります。</span>
+              </li>
+              <li>
+                <strong>「少し非日常」を混ぜる</strong>
+                <span>行ったことのないエリア、期間限定の展示、夕景が見える場所。大きな仕掛けでなくても、いつもと違う体験は適度な高揚感を生みます。</span>
+              </li>
+              <li>
+                <strong>高揚の後は、落ち着いて話す時間を</strong>
+                <span>盛り上がった直後のカフェでの会話は、普段より打ち解けやすいことがあります。体験と会話をセットで設計すると活かしやすくなります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">2回目のデートの誘い方。</span>いつもの食事だけでなく、小さな体験を添えた提案です。</p>
+              <p>「今度、駅の近くで期間限定の夜市みたいなのをやってるみたいで。食事の前に少し寄ってみませんか」</p>
+              <p>体験の部分が「いつもと違う」という小さな高揚感を生み、その後の食事の会話も弾みやすくなります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>相手を怖がらせたり、不安にさせたりする演出は論外です。絶叫系が苦手な人もいれば、体調や事情で参加できない体験もあります。高揚感の前に、相手の好みと負担の確認が先です。「ドキドキさせれば好かれる」という単純な話ではなく、あくまで楽しい体験を共有した結果として生まれるもの、と捉えておくのが安全です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no9">← 前へ：No.9 ピーク・エンドの法則</a>
+            <a href="#no11">次へ：No.11 ゲイン効果 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.11 カード -->
+      <article class="card" id="no11">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.11</span>
+            <span class="group-theme">デートの設計に効く仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step2 デート（対面1〜2回目）</span></div>
+          <h2>ゲイン効果</h2>
+          <p>デートの設計に効く仕組み ― 普段との「差」が、印象を強める</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人の評価は、絶対的な良し悪しだけでなく「前との差」にも影響されます。普段の様子を知っている相手が、ふだんと違う一面を見せると、そのギャップが印象を強めやすい、というのがゲイン効果の考え方です。最初からずっと完璧な人より、「普段は穏やかなのに、仕事の話になると目が変わる」といった差のある人のほうが、記憶に残りやすいことがあります。</p>
+            <div class="diagram" role="img" aria-label="普段の自分と見せ場の一面の対比の図">
+              <div class="compare">
+                <div class="box">
+                  <span class="box-k">普段</span>
+                  <span class="box-t">穏やかで、聞き役が多い</span>
+                  <span class="box-d">いつもの自分</span>
+                </div>
+                <div class="box hot">
+                  <span class="box-k">見せ場</span>
+                  <span class="box-t">得意な話では目が輝く</span>
+                  <span class="box-d">差が印象を強める</span>
+                </div>
+              </div>
+              <p class="cap">差があるからこそ、見せ場の一面が際立つ</p>
+            </div>
+            <p>裏を返すと、普段の自分を無理に作り込む必要はない、ということでもあります。普段があるから、見せ場が生きてきます。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>見せ場を1つだけ作る</strong>
+                <span>得意な料理の話、仕事で工夫していること、長く続けている趣味。デートの中に「ここは自分の得意分野」という場面が1つあると、印象に差が生まれます。</span>
+              </li>
+              <li>
+                <strong>意外な一面は、自然な流れで</strong>
+                <span>「実は学生時代、吹奏楽でトランペットを吹いていて」のような一面は、会話の流れで出てくるからこそ印象に残ります。披露する場を無理に作らないことが大切です。</span>
+              </li>
+              <li>
+                <strong>店や場面の差も使える</strong>
+                <span>普段使いの店と、少し特別な店。場面に差があると、デート全体にもメリハリが生まれます（No.9のピークづくりにもつながります）。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">食事中、メニューを選ぶ場面。</span>普段は相手に合わせることが多い人が、得意な分野でリードする一例です。</p>
+              <p>「この店、実は前にも来たことがあって。よかったら、おすすめを2〜3品選んでもいいですか」</p>
+              <p>さりげない段取りの良さが、「頼れる一面」として差を作ります。大げさなアピールでなくて大丈夫です。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>差を作るために、普段の自分をわざと落として見せるのは本末転倒です。また、見せ場だらけのデートは、相手に「演じている」印象を与えかねません。背伸びした一面は、いずれ普段との落差として返ってきます。見せ場は「本当にある強み」から選ぶのが基本です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no10">← 前へ：No.10 ドキドキの誤帰属</a>
+            <a href="#no12">次へ：No.12 知覚される応答性 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.12 カード -->
+      <article class="card" id="no12">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.12</span>
+            <span class="group-theme">分かり合う仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step3 関係構築（対面3回目以降）</span></div>
+          <h2>知覚される応答性</h2>
+          <p>分かり合う仕組み ― 「大事にされている」という感覚が、親密さの核になる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>対人関係の研究者ハリー・ライスらの研究では、親密さの核は「相手が自分に応えてくれている」と感じられること（知覚される応答性）にある、と考えられています。その中身は大きく3つ。自分のことを理解してくれている（理解）、そのまま受け止めてくれている（受容）、自分を大事に思って配慮してくれている（配慮）です。</p>
+            <div class="diagram" role="img" aria-label="理解・受容・配慮の3要素が、親密さにつながる図">
+              <div class="trio">
+                <div class="t-card"><span class="t-t">理解</span><span class="t-d">考えや気持ちを分かってくれる</span></div>
+                <div class="t-card"><span class="t-t">受容</span><span class="t-d">否定せず、そのまま受け止めてくれる</span></div>
+                <div class="t-card"><span class="t-t">配慮</span><span class="t-d">大事に思い、行動で気遣ってくれる</span></div>
+              </div>
+              <div class="down-arrow" aria-hidden="true">↓</div>
+              <span class="result">「大事にされている」→ 親密さ</span>
+              <p class="cap">3つがそろうと、相手の中に「この人といると安心できる」が育っていく</p>
+            </div>
+            <p>大切なのは、実際に応えているかどうかだけでなく、相手に「伝わっているか」です。応答性は、相手の感覚の中で完成するものだと言えます。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>相手の価値観を、要約して返す</strong>
+                <span>「○○さんは、仕事でも休みでも『自分のペースを大事にしたい』という感じなんですね」のように、相手の考えを自分の言葉でまとめ直して返すと、「理解」が伝わりやすくなります。</span>
+              </li>
+              <li>
+                <strong>否定せず、まず受け止める</strong>
+                <span>意見が違っても、最初の一言は受容から。「そういう考え方もあるんですね」と受け止めてから、自分の考えを添える順番がおすすめです。</span>
+              </li>
+              <li>
+                <strong>覚えて、行動に移す</strong>
+                <span>前に話していた好みや予定を覚えていて、次のデートや連絡で触れること。これは「配慮」が最も伝わりやすい形の1つです。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">3回目のデート。前回、相手が「平日は仕事でへとへと」と話していたことを受けて。</span></p>
+              <p>「先週、平日が大変そうだったので、今日は近場でゆっくりできる店にしました。無理のないペースで大丈夫ですよ」</p>
+              <p>覚えていること（理解）と、それを行動に変えたこと（配慮）がセットになると、応答性は言葉以上に伝わります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>「分かります」を連発するだけの、分かったふりは逆効果です。相手は敏感に気づきますし、後から食い違いが出たときに落差が大きくなります。分からないことは「そこはまだよく分かっていないので、教えてもらえますか」と聞くほうが、結果的に理解は深まります。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no11">← 前へ：No.11 ゲイン効果</a>
+            <a href="#no13">次へ：No.13 自己拡大モデル →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.13 カード -->
+      <article class="card" id="no13">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.13</span>
+            <span class="group-theme">分かり合う仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step3 関係構築（対面3回目以降）</span></div>
+          <h2>自己拡大モデル</h2>
+          <p>分かり合う仕組み ― 一緒に世界が広がる関係は、長く満足が続く</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>アーサー・アーロンらが提唱した「自己拡大モデル」では、人は「自分の世界を広げたい」という欲求を持っていて、パートナーとの関係を通して新しい経験・知識・視点が得られると、関係への満足度が上がりやすい、と考えられています。相手の世界が自分の世界に少しずつ重なって広がっていく感覚が、関係のエネルギーになるということです。</p>
+            <div class="diagram" role="img" aria-label="自分の円と相手の円が重なり合いながら、全体が広がっていく図">
+              <svg viewBox="0 0 320 170" width="320">
+                <circle cx="118" cy="85" r="58" fill="none" stroke="#b9975b" stroke-width="2.5" />
+                <circle cx="202" cy="85" r="58" fill="none" stroke="#101c31" stroke-width="2.5" />
+                <circle cx="160" cy="85" r="76" fill="none" stroke="#b9975b" stroke-width="1.5" stroke-dasharray="6 5" />
+                <text x="82" y="90" class="svg-label-strong">自分</text>
+                <text x="212" y="90" class="svg-label-strong">相手</text>
+                <text x="112" y="162" class="svg-label">2人で広がる世界</text>
+              </svg>
+              <p class="cap">相手の経験や視点が入ってくることで、自分の世界が広がっていく</p>
+            </div>
+            <p>逆に、会うたびに同じ店・同じ会話の繰り返しになると、この「広がる感覚」が生まれにくく、マンネリにつながりやすくなります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>3回目以降は「初めて」を混ぜる</strong>
+                <span>いつもの店も安心で良いのですが、2人に共通の「初めての体験」を少しずつ混ぜると、関係に新鮮さが保ちやすくなります。</span>
+              </li>
+              <li>
+                <strong>相手の世界を借りる</strong>
+                <span>相手の趣味や詳しい分野を教えてもらうデートは、自己拡大そのものです。「教えてもらう側」になることは、相手にとっても嬉しい体験になりやすいです。</span>
+              </li>
+              <li>
+                <strong>自分の世界も少し開く</strong>
+                <span>自分の趣味の入り口を一緒に体験してもらうなど、お互いの世界を行き来できると、広がりは両方向になります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">3回目以降のデートの提案。</span>相手が美術館が好きだと知っている場合。</p>
+              <p>「今度、○○さんが前に話していた展示に一緒に行ってみませんか。僕は詳しくないので、見どころを教えてもらえると嬉しいです」</p>
+              <p>相手の世界に入れてもらう誘い方は、新しい経験と「頼られている」という感覚の両方を生みます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>新しい体験も、相手の好みや負担を無視しては逆効果です。体力を使う企画、費用がかさむ企画は、相手の事情を確認してからにしましょう。また、「いつもと違うこと」を義務のように課すと、会うこと自体が疲れるものになります。初めての体験は、無理のない範囲で少しずつ、が基本です。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no12">← 前へ：No.12 知覚される応答性</a>
+            <a href="#no14">次へ：No.14 小さな合意の積み重ね →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.14 カード -->
+      <article class="card" id="no14">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.14</span>
+            <span class="group-theme">分かり合う仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step3 関係構築（対面3回目以降）</span></div>
+          <h2>小さな合意の積み重ね</h2>
+          <p>分かり合う仕組み ― 小さい「そうだね」の積み重ねが、大きな話の土台になる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>人には、自分が一度決めたことや同意したことと、一貫した行動を取りたいという傾向（一貫性）があります。小さなテーマで「確かにそうだね」と合意できた経験が積み重なると、「この人とは話し合えば分かり合える」という感覚が育ち、将来や価値観のような大きなテーマも、話し合い自体が進めやすくなると考えられます。</p>
+            <div class="diagram" role="img" aria-label="小さな合意のブロックが積み上がって、大きなテーマに届く階段の図">
+              <div class="stack">
+                <div class="brick">日常の好みの合意<small>食の好み、休日の過ごし方</small></div>
+                <div class="brick">生活の土台の合意<small>お金や時間の使い方の感覚</small></div>
+                <div class="brick">将来像の合意<small>暮らし方、働き方のイメージ</small></div>
+                <div class="brick top">大きなテーマも話し合える関係<small>積み重ねの先にできる土台</small></div>
+              </div>
+              <p class="cap">下から順に積むから、上段の話も安定して進められる</p>
+            </div>
+            <p>順番が大切です。土台のないところに大きなテーマを持ち込むと、話し合い以前に、相手が身構えてしまうことがあります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>価値観の確認は、軽いテーマから</strong>
+                <span>日常の好み（3〜4回目）→生活の土台（5回目）→将来像（6〜7回目）のように、段階を踏んで少しずつテーマを重くしていく進め方がおすすめです。</span>
+              </li>
+              <li>
+                <strong>合意できたら、言葉にして確認する</strong>
+                <span>「じゃあ、休みの日は2人ともゆっくりしたい派、ということですね」のように小さくまとめると、合意が2人の共通の記憶になります。</span>
+              </li>
+              <li>
+                <strong>合意できない点も、早めに小さく知る</strong>
+                <span>違いが小さいうちに分かっていれば、調整の余地も大きくなります。違いが見つかることも、積み重ねの大事な一部です。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">休日の過ごし方の話で、好みが合った場面。</span></p>
+              <p>「遠出もいいけど、近場でゆっくりが好き、ってところは一緒ですね。気が合いますね」</p>
+              <p>小さな合意を、その場で言葉にして2人のものにする。これが次の話題への土台になっていきます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>合意を取ること自体が目的になると、会話が尋問や確認作業のようになってしまいます。合意は、話しているうちに自然に見つかるものを確認する、くらいの距離感がちょうどいいはずです。また、相手が合わせてくれているだけの「合意」もあります。相手の表情や温度も見ながら進めてください。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no13">← 前へ：No.13 自己拡大モデル</a>
+            <a href="#no15">次へ：No.15 ポジティブとネガティブの比率（5:1） →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.15 カード -->
+      <article class="card" id="no15">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.15</span>
+            <span class="group-theme">関係を続ける仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step4 関係深化</span><span>#Step5 信頼維持</span></div>
+          <h2>ポジティブとネガティブの比率（5:1）</h2>
+          <p>関係を続ける仕組み ― 日常の小さな「良いやり取り」が、関係の貯金になる</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>関係研究のジョン・ゴットマンらの観察では、安定した関係にあるカップルは、日常のやり取りの中で、ポジティブな関わり（笑い、感謝、共感、ちょっとした好意の表現）が、ネガティブな関わり（批判、イライラ、無視など）のおよそ5倍ある、と言われています。ケンカがゼロなのではなく、普段の貯金が多いから、たまの衝突でも関係が揺らぎにくい、という見方です。</p>
+            <div class="diagram" role="img" aria-label="ポジティブなやり取り5つに対して、ネガティブなやり取り1つのバランス図">
+              <div class="ratio">
+                <span class="pos">笑い</span>
+                <span class="pos">感謝</span>
+                <span class="pos">共感</span>
+                <span class="pos">好意</span>
+                <span class="pos">興味</span>
+                <span class="neg">不満・衝突</span>
+              </div>
+              <p class="cap">ポジティブ 5 ： ネガティブ 1 が、安定した関係の目安とされる</p>
+            </div>
+            <p>ネガティブな出来事は、同じ1回でも心理的な重みが大きいものです。だからこそ、日常の小さなポジティブを「多めに」積んでおくことに意味があります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>日常の小さな好意を増やす</strong>
+                <span>特別なサプライズでなくて大丈夫です。「お疲れさま」の一言、相手の話への興味、ちょっとした笑い。回数の多い小さな関わりが貯金になります。</span>
+              </li>
+              <li>
+                <strong>不満は、貯金があるうちに小さく伝える</strong>
+                <span>言いたいことを我慢し続けるのも比率を崩します。小さな不満は小さいうちに、穏やかに伝えるほうが、大きな衝突になりにくくなります。</span>
+              </li>
+              <li>
+                <strong>衝突の後は、修復の一言を</strong>
+                <span>言い過ぎたときの「さっきはごめん」という一言は、ネガティブをポジティブ側に数え直す働きをします。関係は、衝突の有無より修復の有無で変わってきます。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">交際が始まってしばらくした頃の、日常のLINE。</span></p>
+              <p>「今日、前に話してた本が目に入って、○○さんのこと思い出した。読み終わったら感想聞かせて」</p>
+              <p>用事のない、相手を思い出しただけの連絡。これは典型的な「小さなポジティブ」です。こういう関わりの積み重ねが比率を作っていきます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>5:1は目安であって、ノルマではありません。数を稼ぐために無理にポジティブを演じると、かえって不自然になりますし、本当に伝えるべき不満まで飲み込んでしまうと、後で大きく噴き出すことがあります。比率は「普段の関わり方を振り返る物差し」として使うのがおすすめです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no14">← 前へ：No.14 小さな合意の積み重ね</a>
+            <a href="#no16">次へ：No.16 感謝の伝達 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.16 カード -->
+      <article class="card" id="no16">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.16</span>
+            <span class="group-theme">関係を続ける仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step4 関係深化</span><span>#Step5 信頼維持</span></div>
+          <h2>感謝の伝達</h2>
+          <p>関係を続ける仕組み ― 「ありがとう」は、関係を結び直す行為でもある</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>感謝の研究（サラ・アルゴーらの「Find-Remind-Bind」理論）では、感謝を伝えることには3つの働きがあると考えられています。相手の良いところに気づく（Find）、その存在を思い出す（Remind）、そして関係を結び直す（Bind）。感謝された側は「大事にされている」と感じ、感謝した側も「この関係を続けたい」という気持ちが高まりやすい、と言われています。</p>
+            <div class="diagram" role="img" aria-label="感謝を伝えると安心が生まれ、もっと大事にしたい気持ちにつながる循環の図">
+              <div class="cycle">
+                <span class="c-node">感謝を伝える</span>
+                <span class="c-arrow" aria-hidden="true">→</span>
+                <span class="c-node">「大事にされている」安心</span>
+                <span class="c-arrow" aria-hidden="true">→</span>
+                <span class="c-node">もっと大事にしたい</span>
+                <span class="c-arrow loop" aria-hidden="true">↺<span class="loop-label"> 最初へ戻る</span></span>
+              </div>
+              <p class="cap">感謝は一方向の礼儀ではなく、関係を回していく循環の起点になる</p>
+            </div>
+            <p>感謝は、相手への評価であると同時に、関係そのものへの「これからもよろしく」という意思表示でもあります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>「何が、どう嬉しかったか」まで言葉にする</strong>
+                <span>「ありがとう」だけより、「忙しいのに時間を作ってくれて、嬉しかったです」のように、相手の行動と自分の気持ちをセットにすると伝わり方が変わります。</span>
+              </li>
+              <li>
+                <strong>当たり前になったことにも感謝を</strong>
+                <span>毎回の見送り、いつもの連絡。慣れてきた頃に改めて感謝を伝えると、「ちゃんと見てくれている」という感覚が相手に残ります。</span>
+              </li>
+              <li>
+                <strong>タイミングは、その日のうちに</strong>
+                <span>感謝は鮮度も大切です。デート後のLINEなど、その日のうちに届けるほうが、相手の記憶とも結びつきやすくなります。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">デート後、帰宅したタイミングでのLINE。</span></p>
+              <p>「今日はありがとうございました。店を選ぶときに、僕が前に話した好みを覚えててくれたのが、すごく嬉しかったです」</p>
+              <p>具体的な場面を挙げた感謝は、「自分のことを見てくれている」という証拠として相手に届きます。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>形だけの「ありがとう」を何度も連発すると、言葉の重みは薄れていきます。また、感謝のつもりが「こんなに感謝しているのだから」という見返りの圧になっては本末転倒です。回数よりも、具体性と本心があるかどうか。1回の具体的な感謝は、10回の形式的な感謝に勝ることが多いはずです。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no15">← 前へ：No.15 ポジティブとネガティブの比率（5:1）</a>
+            <a href="#no17">次へ：No.17 約束を守る一貫性 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- No.17 カード -->
+      <article class="card" id="no17">
+        <div class="card-head">
+          <div class="meta">
+            <span class="no-badge">No.17</span>
+            <span class="group-theme">関係を続ける仕組み</span>
+          </div>
+          <div class="group-tags"><span>#Step4 関係深化</span><span>#Step5 信頼維持</span></div>
+          <h2>約束を守る一貫性</h2>
+          <p>関係を続ける仕組み ― 信頼は、小さな約束の積み重ねでできている</p>
+        </div>
+        <div class="card-body">
+          <div class="part">
+            <p class="part-label"><span class="step-num">1</span>仕組み ― なぜ効くか</p>
+            <p>信頼は、大きな出来事で一気にできるものではなく、「言ったことを、言った通りにやる」という小さな一貫性の積み重ねでできていく、と考えられます。人は相手の行動のパターンを見て「この人は予測できる。だから安心できる」と判断します。逆に、小さな約束のほころびが続くと、大きな約束の言葉も信じてもらいにくくなります。</p>
+            <div class="diagram" role="img" aria-label="小さな約束を守るレンガが積み上がって、信頼になる図">
+              <div class="stack">
+                <div class="brick">時間を守る<small>待ち合わせ、期限</small></div>
+                <div class="brick">連絡の約束を守る<small>「夜に連絡します」を実行する</small></div>
+                <div class="brick">言ったことを実行する<small>「今度行こう」を本当に行く</small></div>
+                <div class="brick top">「この人なら大丈夫」という信頼<small>大きな決断も任せられる土台</small></div>
+              </div>
+              <p class="cap">レンガ1つは小さくても、積み上がると大きな信頼になる</p>
+            </div>
+            <p>No.14の「小さな合意」が話し合いの一貫性だとすれば、こちらは行動の一貫性です。言葉と行動がそろっていることが、信頼の材料になります。</p>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">2</span>デートでの使い方</p>
+            <ul class="use">
+              <li>
+                <strong>連絡の約束は、小さくても守る</strong>
+                <span>「帰ったら連絡します」「週末に日程を返します」。こうした小さな予告は、相手にとって信頼のテストになっています。言った通りに実行することが大切です。</span>
+              </li>
+              <li>
+                <strong>時間の約束は、少し余裕を持って</strong>
+                <span>待ち合わせに遅れないのはもちろん、デートの終了時間の目安を伝えておくことも、相手への配慮としての一貫性です。</span>
+              </li>
+              <li>
+                <strong>「今度行こう」を放置しない</strong>
+                <span>社交辞令で言った誘いが実行されないと、言葉全体の信用が下がります。本当に行くつもりのある誘いだけを言葉にするのがおすすめです。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">3</span>言い方・動きの一例</p>
+            <div class="example">
+              <p><span class="scene">仕事の都合で、約束していた連絡が遅れそうな場面。</span></p>
+              <p>「今日中に日程の返事をするって言ったんですけど、仕事が押していて明日になりそうです。先に連絡だけしておきますね」</p>
+              <p>守れないこと自体より、黙って破ることが信頼を削ります。先に一報を入れる行動は、それ自体が一貫性の証明になります。</p>
+            </div>
+          </div>
+          <div class="part">
+            <p class="part-label"><span class="step-num">4</span>やりすぎ注意</p>
+            <div class="warn">
+              <p>守ることが大切だからこそ、守れない約束は最初からしないことが前提です。その場の空気で大きな約束をしてしまうと、後で自分も相手も苦しくなります。約束は「できる範囲で、少し控えめに」。そして、どうしても破れそうなときは、期限が来る前に自分から連絡を。それだけで信頼の傷はかなり小さくできます。</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="#no16">← 前へ：No.16 感謝の伝達</a>
+            <a href="#toc">目次へ戻る ↑</a>
+          </div>
+        </div>
+      </article>
+
+      <footer class="page-foot">
+        <p class="brand">PRO-GRAV</p>
+        <p>心理学を応用したコミュニケーション戦術 ― 会員向けインプット教材</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
